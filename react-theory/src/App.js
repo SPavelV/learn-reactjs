@@ -22,29 +22,36 @@ class App extends React.Component {
     console.log("change", event.target.value)
   }
 
+  toggleCarsHandler = () => {
+    this.setState({
+      showCars: !this.state.showCars
+    })
+  }
+
   render() {
-    console.log('render');
     const divStyle = {
       textAlign: 'center'
+    }
+
+    let cars = null;
+    if (this.state.showCars) {
+      cars = this.state.cars.map((element, i) => {
+        return <Car 
+          key={i}
+          name={element.name}
+          year={element.year}
+          onChangeTitle={()=> this.changeTitleHandler(element.name)}
+          />
+      })
     }
     
     return (
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
 
-        <input type="text" onChange={this.handleInput}/>
-        <button onClick={() => this.changeTitleHandler('Changed')}>Change title</button>
-  
-        {
-          this.state.cars.map((element, i) => {
-            return <Car 
-              key={i}
-              name={element.name}
-              year={element.year}
-              onChangeTitle={()=> this.changeTitleHandler(element.name)}
-              />
-          })
-        }
+        <button onClick={this.toggleCarsHandler}>Toggle cars</button>
+        
+        { this.state.showCars ? cars : null }
       </div>
     );
   }
