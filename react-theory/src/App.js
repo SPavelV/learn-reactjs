@@ -12,20 +12,23 @@ class App extends React.Component {
     pageTitle: "React components"
   }
 
-  changeTitleHandler = (newTitle) => {
-    this.setState({
-      pageTitle: newTitle
-    })
-  }
-
-  handleInput = (event) => {
-    console.log("change", event.target.value)
+  onChangeName = (name, index) => {
+    const car = this.state.cars[index];
+    car.name = name;
+    const cars = [...this.state.cars];
+    cars[index] = car;
+    this.setState({cars});
   }
 
   toggleCarsHandler = () => {
     this.setState({
       showCars: !this.state.showCars
     })
+  }
+
+  deleteHandler(index) {
+    const cars = this.state.cars.filter((element, i) => i !== index);
+    this.setState({cars});
   }
 
   render() {
@@ -35,13 +38,14 @@ class App extends React.Component {
 
     let cars = null;
     if (this.state.showCars) {
-      cars = this.state.cars.map((element, i) => {
+      cars = this.state.cars.map((element, index) => {
         return <Car 
-          key={i}
+          key={index}
           name={element.name}
           year={element.year}
-          onChangeTitle={()=> this.changeTitleHandler(element.name)}
-          />
+          onDelete={this.deleteHandler.bind(this, index)}
+          onChangeName={(event)=> this.onChangeName(event.target.value, index)}
+        />
       })
     }
     
