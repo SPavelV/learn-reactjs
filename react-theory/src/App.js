@@ -2,20 +2,48 @@ import React from 'react';
 import Car from './Car/Car';
 
 class App extends React.Component {
+
+  state = {
+    cars: [
+      { name:'Ford', year: 2018},
+      { name:'Audi', year: 2016},
+      { name:'Mazda', year: 2010}
+    ],
+    pageTitle: "React components"
+  }
+
+  changeTitleHandler = (newTitle) => {
+    this.setState({
+      pageTitle: newTitle
+    })
+  }
+
   render() {
+    console.log('render');
     const divStyle = {
       textAlign: 'center'
     }
+    
+    const cars = this.state.cars;
     return (
       <div style={divStyle}>
-        <h1>Hello world!</h1>
-        <Car name='Ford' year={2018}>
-          <p style={{color: "orange"}}>Color</p>
-        </Car>
-        <Car name='Audi' year={2016}>
-          <p style={{color: "red"}}>Color</p>
-        </Car>
-        <Car name={'Mazda'} year={2010}/>
+        <h1>{this.state.pageTitle}</h1>
+        <button onClick={() => this.changeTitleHandler('Changed')}>Change title</button>
+        <Car
+          name={cars[0].name}
+          year={cars[0].year}
+          onChangeTitle={() => this.changeTitleHandler(cars[0].name)}
+        />
+        <Car
+          name={cars[1].name}
+          year={cars[1].year}
+          onChangeTitle={() => this.changeTitleHandler(cars[1].name)}
+        />
+        <Car
+          name={cars[2].name}
+          year={cars[2].year}
+          onChangeTitle={() => this.changeTitleHandler(cars[2].name)}
+        />
       </div>
     );
   }
