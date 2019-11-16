@@ -1,6 +1,7 @@
 import React from 'react';
 import Car from './Car/Car';
-
+import classes from './App.module.scss';
+console.log(classes)
 class App extends React.Component {
 
   state = {
@@ -51,10 +52,10 @@ class App extends React.Component {
     }
     
     return (
-      <div style={divStyle}>
-        <h1>{this.state.pageTitle}</h1>
+      <div className={classes.App} style={divStyle}>
+        <h1 className={classes['App-header']}>{this.state.pageTitle}</h1>
 
-        <button onClick={this.toggleCarsHandler}>Toggle cars</button>
+        <button className={classes['App-button']} onClick={this.toggleCarsHandler}>Toggle cars</button>
         
         { this.state.showCars ? 
         <div
