@@ -9,7 +9,8 @@ class App extends React.Component {
       { name:'Audi', year: 2016},
       { name:'Mazda', year: 2010}
     ],
-    pageTitle: "React components"
+    pageTitle: "React components",
+    showCars: true
   }
 
   onChangeName = (name, index) => {
@@ -55,7 +56,15 @@ class App extends React.Component {
 
         <button onClick={this.toggleCarsHandler}>Toggle cars</button>
         
-        { this.state.showCars ? cars : null }
+        { this.state.showCars ? 
+        <div
+          style = {{
+            width: 400,
+            margin: 'auto',
+            padding: '10px',
+          }}
+        >{cars}</div> 
+        : null }
       </div>
     );
   }
