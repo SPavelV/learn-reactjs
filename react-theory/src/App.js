@@ -1,17 +1,20 @@
 import React from 'react';
 import Car from './Car/Car';
-import classes from './App.module.scss';
-console.log(classes)
+import './App.scss';
 class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  state = {
-    cars: [
-      { name:'Ford', year: 2018},
-      { name:'Audi', year: 2016},
-      { name:'Mazda', year: 2010}
-    ],
-    pageTitle: "React components",
-    showCars: true
+    this.state ={
+      cars: [
+        { name:'Ford', year: 2018},
+        { name:'Audi', year: 2016},
+        { name:'Mazda', year: 2010}
+      ],
+      pageTitle: "React components",
+      showCars: true
+    }
+  
   }
 
   onChangeName = (name, index) => {
@@ -52,10 +55,12 @@ class App extends React.Component {
     }
     
     return (
-      <div className={classes.App} style={divStyle}>
-        <h1 className={classes['App-header']}>{this.state.pageTitle}</h1>
+      <div className="App" style={divStyle}>
+        {/* <h1 className="App-header">{this.state.pageTitle}</h1> */}
 
-        <button className={classes['App-button']} onClick={this.toggleCarsHandler}>Toggle cars</button>
+        <h1>{this.props.title}</h1>
+
+        <button className="App-button" onClick={this.toggleCarsHandler}>Toggle cars</button>
         
         { this.state.showCars ? 
         <div
