@@ -5,14 +5,13 @@ import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import Counter from './Counter/Counter'
 class App extends React.Component {
   constructor(props) {
-    console.log('App constructor');
     super(props);
 
     this.state = {
       cars: [
         { name: 'Ford', year: 2018 },
-        // { name: 'Audi', year: 2016 },
-        // { name: 'Mazda', year: 2010 }
+        { name: 'Audi', year: 2016 },
+        { name: 'Mazda', year: 2010 }
       ],
       pageTitle: 'React components',
       showCars: true
@@ -38,16 +37,7 @@ class App extends React.Component {
     this.setState({ cars });
   }
 
-  // componentWillMount() {
-  //   console.log('componentWillMount');
-  // }
-
-  // componentDidMount() {
-  //   console.log('componentDidMount');
-  // }
-
   render() {
-    console.log('render');
     const divStyle = {
       textAlign: 'center'
     };
