@@ -1,21 +1,21 @@
-import React from 'react';
-import Car from './Car/Car';
-import './App.scss';
+import React from "react";
+import Car from "./Car/Car";
+import "./App.scss";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 class App extends React.Component {
   constructor(props) {
-    console.log('App constructor');
+    console.log("App constructor");
     super(props);
 
-    this.state ={
+    this.state = {
       cars: [
-        { name:'Ford', year: 2018},
-        // { name:'Audi', year: 2016},
-        // { name:'Mazda', year: 2010}
+        { name: "Ford", year: 2018 },
+        { name: "Audi", year: 2016 },
+        { name: "Mazda", year: 2010 }
       ],
       pageTitle: "React components",
       showCars: true
-    }
-  
+    };
   }
 
   onChangeName = (name, index) => {
@@ -23,69 +23,76 @@ class App extends React.Component {
     car.name = name;
     const cars = [...this.state.cars];
     cars[index] = car;
-    this.setState({cars});
-  }
+    this.setState({ cars });
+  };
 
   toggleCarsHandler = () => {
     this.setState({
       showCars: !this.state.showCars
-    })
-  }
+    });
+  };
 
   deleteHandler(index) {
     const cars = this.state.cars.filter((element, i) => i !== index);
-    this.setState({cars});
+    this.setState({ cars });
   }
 
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
+  // componentWillMount() {
+  //   console.log("componentWillMount");
+  // }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
+  // componentDidMount() {
+  //   console.log("componentDidMount");
+  // }
 
   render() {
-    console.log('render');
+    console.log("render");
     const divStyle = {
-      textAlign: 'center'
-    }
+      textAlign: "center"
+    };
 
     let cars = null;
     if (this.state.showCars) {
       cars = this.state.cars.map((element, index) => {
-        return <Car 
-          key={index}
-          name={element.name}
-          year={element.year}
-          onDelete={this.deleteHandler.bind(this, index)}
-          onChangeName={(event)=> this.onChangeName(event.target.value, index)}
-        />
-      })
+        return (
+          <ErrorBoundary key={index}>
+            <Car
+              name={element.name}
+              year={element.year}
+              onDelete={this.deleteHandler.bind(this, index)}
+              onChangeName={event =>
+                this.onChangeName(event.target.value, index)
+              }
+            />
+          </ErrorBoundary>
+        );
+      });
     }
-    
+
     return (
       <div className="App" style={divStyle}>
         {/* <h1 className="App-header">{this.state.pageTitle}</h1> */}
 
         <h1>{this.props.title}</h1>
 
-        <button className="App-button" onClick={this.toggleCarsHandler}>Toggle cars</button>
-        
-        { this.state.showCars ? 
-        <div
-          style = {{
-            width: 400,
-            margin: 'auto',
-            padding: '10px',
-          }}
-        >{cars}</div> 
-        : null }
+        <button className="App-button" onClick={this.toggleCarsHandler}>
+          Toggle cars
+        </button>
+
+        {this.state.showCars ? (
+          <div
+            style={{
+              width: 400,
+              margin: "auto",
+              padding: "10px"
+            }}
+          >
+            {cars}
+          </div>
+        ) : null}
       </div>
     );
   }
- 
-
 }
 
 export default App;

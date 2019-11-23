@@ -3,40 +3,45 @@ import React from "react";
 import "./Car.scss";
 
 class Car extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    console.log('Car componentWillReceiveProps', nextProps);
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   console.log('Car componentWillReceiveProps', nextProps);
+  // }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('Car shouldComponentUpdate', nextProps, nextState);
-    return nextProps.name.trim() !== this.props.name.trim();
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('Car shouldComponentUpdate', nextProps, nextState);
+  //   return nextProps.name.trim() !== this.props.name.trim();
+  // }
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log('Car componentWillUpdate', nextProps, nextState);
-  }
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log('Car componentWillUpdate', nextProps, nextState);
+  // }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('Car getDerivedStateFromProps', nextProps, prevState);
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   console.log('Car getDerivedStateFromProps', nextProps, prevState);
 
-    return prevState;
-  }
+  //   return prevState;
+  // }
 
-  componentDidUpdate() {
-    console.log('Car componentDidUpdate');
-  }
+  // componentDidUpdate() {
+  //   console.log('Car componentDidUpdate');
+  // }
 
-  getSnapshotBeforeUpdate = (prevProps, prevState) => {
-    console.log('getSnapshotBeforeUpdate');
-  }
+  // getSnapshotBeforeUpdate = () => {
+  //   console.log('getSnapshotBeforeUpdate');
+  // }
   
   
-  componentWillUnmount() {
-    console.log('Car componentWillUnmount');
-  }
+  // componentWillUnmount() {
+  //   console.log('Car componentWillUnmount');
+  // }
 
   render() {
     console.log('Car render');
+
+    if(Math.random() > 0.7) {
+      throw new Error('Car random failed');
+    }
+
     const {name, year, onChangeName, onDelete} = this.props;
     const inputClasses = ["input"];
 
