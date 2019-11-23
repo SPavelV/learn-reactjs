@@ -1,19 +1,20 @@
-import React from "react";
-import Car from "./Car/Car";
-import "./App.scss";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import React from 'react';
+import Car from './Car/Car';
+import './App.scss';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Counter from './Counter/Counter'
 class App extends React.Component {
   constructor(props) {
-    console.log("App constructor");
+    console.log('App constructor');
     super(props);
 
     this.state = {
       cars: [
-        { name: "Ford", year: 2018 },
-        { name: "Audi", year: 2016 },
-        { name: "Mazda", year: 2010 }
+        { name: 'Ford', year: 2018 },
+        // { name: 'Audi', year: 2016 },
+        // { name: 'Mazda', year: 2010 }
       ],
-      pageTitle: "React components",
+      pageTitle: 'React components',
       showCars: true
     };
   }
@@ -38,17 +39,17 @@ class App extends React.Component {
   }
 
   // componentWillMount() {
-  //   console.log("componentWillMount");
+  //   console.log('componentWillMount');
   // }
 
   // componentDidMount() {
-  //   console.log("componentDidMount");
+  //   console.log('componentDidMount');
   // }
 
   render() {
-    console.log("render");
+    console.log('render');
     const divStyle = {
-      textAlign: "center"
+      textAlign: 'center'
     };
 
     let cars = null;
@@ -70,12 +71,15 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App" style={divStyle}>
-        {/* <h1 className="App-header">{this.state.pageTitle}</h1> */}
+      <div className='App' style={divStyle}>
+        {/* <h1 className='App-header'>{this.state.pageTitle}</h1> */}
 
         <h1>{this.props.title}</h1>
 
-        <button className="App-button" onClick={this.toggleCarsHandler}>
+        <Counter/>
+        <hr/>
+
+        <button style={{marginTop: 20}} className='App-button' onClick={this.toggleCarsHandler}>
           Toggle cars
         </button>
 
@@ -83,8 +87,8 @@ class App extends React.Component {
           <div
             style={{
               width: 400,
-              margin: "auto",
-              padding: "10px"
+              margin: 'auto',
+              padding: '10px'
             }}
           >
             {cars}
