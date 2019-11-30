@@ -1,9 +1,10 @@
-import React from 'react';
-import Car from './Car/Car';
-import './App.scss';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
-import Counter from './Counter/Counter'
+import React from "react";
+import Car from "./Car/Car";
+import "./App.scss";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Counter from "./Counter/Counter";
 
+export const ClickedContext = React.createContext(false);
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,11 +12,11 @@ class App extends React.Component {
     this.state = {
       clicked: false,
       cars: [
-        { name: 'Ford', year: 2018 },
-        { name: 'Audi', year: 2016 },
-        { name: 'Mazda', year: 2010 }
+        { name: "Ford", year: 2018 },
+        { name: "Audi", year: 2016 },
+        { name: "Mazda", year: 2010 }
       ],
-      pageTitle: 'React components',
+      pageTitle: "React components",
       showCars: true
     };
   }
@@ -41,7 +42,7 @@ class App extends React.Component {
 
   render() {
     const divStyle = {
-      textAlign: 'center'
+      textAlign: "center"
     };
 
     let cars = null;
@@ -64,26 +65,35 @@ class App extends React.Component {
     }
 
     return (
-      <div className='App' style={divStyle}>
+      <div className="App" style={divStyle}>
         {/* <h1 className='App-header'>{this.state.pageTitle}</h1> */}
 
         <h1>{this.props.title}</h1>
 
-        <Counter clicked = {this.state.clicked}/>
-        <hr/>
+        <ClickedContext.Provider value={this.state.clicked}>
+          <Counter />
+        </ClickedContext.Provider>
 
-        <button style={{marginTop: 20}} className='App-button' onClick={this.toggleCarsHandler}>
+        <hr />
+
+        <button
+          style={{ marginTop: 20 }}
+          className="App-button"
+          onClick={this.toggleCarsHandler}
+        >
           Toggle cars
         </button>
 
-        <button onClick={() => this.setState({clicked: true})}>Change clicked</button>
+        <button onClick={() => this.setState({ clicked: true })}>
+          Change clicked
+        </button>
 
         {this.state.showCars ? (
           <div
             style={{
               width: 400,
-              margin: 'auto',
-              padding: '10px'
+              margin: "auto",
+              padding: "10px"
             }}
           >
             {cars}
