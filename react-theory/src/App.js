@@ -3,11 +3,13 @@ import Car from './Car/Car';
 import './App.scss';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 import Counter from './Counter/Counter'
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      clicked: false,
       cars: [
         { name: 'Ford', year: 2018 },
         { name: 'Audi', year: 2016 },
@@ -67,12 +69,14 @@ class App extends React.Component {
 
         <h1>{this.props.title}</h1>
 
-        <Counter/>
+        <Counter clicked = {this.state.clicked}/>
         <hr/>
 
         <button style={{marginTop: 20}} className='App-button' onClick={this.toggleCarsHandler}>
           Toggle cars
         </button>
+
+        <button onClick={() => this.setState({clicked: true})}>Change clicked</button>
 
         {this.state.showCars ? (
           <div
