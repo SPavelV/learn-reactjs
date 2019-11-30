@@ -48,6 +48,7 @@ class App extends React.Component {
         return (
           <ErrorBoundary key={index}>
             <Car
+              index={index}
               name={element.name}
               year={element.year}
               onDelete={this.deleteHandler.bind(this, index)}

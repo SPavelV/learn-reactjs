@@ -5,6 +5,18 @@ import PropTypes from 'prop-types';
 
 
 class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.inputRef = React.createRef();
+  }
+
+  componentDidMount() {
+    if(this.props.index ===1) {
+      this.inputRef.current.focus();
+    }
+  }
+  
+
   render() {
     const { name, year, onChangeName, onDelete } = this.props;
     const inputClasses = ["input"];
@@ -26,6 +38,7 @@ class Car extends React.Component {
           Year: <strong>{year}</strong>
         </p>
         <input
+          ref = {this.inputRef}
           type="text"
           onChange={onChangeName}
           value={name}
@@ -41,7 +54,8 @@ Car.propTypes = {
   name: PropTypes.string.isRequired,
   year: PropTypes.number,
   onChangeName: PropTypes.func,
-  onDelete: PropTypes.func
+  onDelete: PropTypes.func,
+  index: PropTypes.number
 }
 
 export default withClass(Car, "Car");
