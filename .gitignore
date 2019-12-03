@@ -30,6 +30,7 @@ build/Release
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 react-theory/node_modules
+react-quiz/node_modules
 
 # Optional npm cache directory
 .npm
