@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Layout.module.css';
-console.log(classes)
+console.log(classes);
 
 export default class Layout extends Component {
   render() {
