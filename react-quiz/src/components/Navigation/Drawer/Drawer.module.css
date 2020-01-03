@@ -14,7 +14,7 @@
 }
 
 .Drawer.close {
-  transform: translateX(-300px);
+  transform: translateX(-320px);
 }
 
 .Drawer ul {

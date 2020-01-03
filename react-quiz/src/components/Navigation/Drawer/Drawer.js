@@ -19,8 +19,12 @@ export class Drawer extends Component {
   }
   
   render() {
+    const cls = [classes.Drawer]
+    if(!this.props.isOpen) {
+      cls.push(classes.close)
+    }
     return (
-      <nav className={classes.Drawer}>
+      <nav className={cls.join(' ')}>
         <ul>
           { this.renderLinks()}
 
