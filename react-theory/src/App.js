@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
-import './App.scss'
-import About from './About/About'
-import Cars from './Cars/Cars'
+import React, { Component } from "react";
+import "./App.scss";
+import { Route } from "react-router-dom";
+import About from "./About/About";
+import Cars from "./Cars/Cars";
 
 class App extends Component {
   render() {
-
     return (
       <div>
         <nav className="nav">
@@ -19,7 +19,9 @@ class App extends Component {
           </ul>
         </nav>
 
-        <hr/>
+        <hr />
+        {/* localhost:3000 */}
+        <Route path="/" exact render={() => <h1>Home page</h1>} />
 
         <About />
 
@@ -29,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default App;
