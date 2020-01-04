@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.scss";
-import { Route, NavLink } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import About from "./About/About";
 import Cars from "./Cars/Cars";
+import CarDetail from "./CarDetail/CarDetail";
 
 class App extends Component {
   render() {
@@ -16,21 +17,30 @@ class App extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeStyle={{color: 'blue'}}>About</NavLink>
+              <NavLink to="/about" activeStyle={{ color: "blue" }}>
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to={{
-                pathname: '/cars'
-              }}>Cars</NavLink>
+              <NavLink
+                to={{
+                  pathname: "/cars"
+                }}
+              >
+                Cars
+              </NavLink>
             </li>
           </ul>
         </nav>
 
         <hr />
         {/* localhost:3000 */}
-        <Route path="/" exact render={() => <h1>Home page</h1>} />
-        <Route path="/about" component={About} />
-        <Route path="/cars" component={Cars} />
+        <Switch>
+          <Route path="/" exact render={() => <h1>Home page</h1>} />
+          <Route path="/about" component={About} />
+          <Route path="/cars/:name" component={CarDetail} />
+          <Route path="/cars" exact component={Cars} />
+        </Switch>
       </div>
     );
   }
