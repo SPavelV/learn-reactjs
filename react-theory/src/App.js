@@ -11,13 +11,19 @@ class App extends Component {
         <nav className="nav">
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" exact activeClassName={"wfm-active"}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/about" activeStyle={{color: 'blue'}}>About</NavLink>
             </li>
             <li>
-              <NavLink to="/cars">Cars</NavLink>
+              <NavLink to={{
+                pathname: '/cars',
+                search: '?a=1&b=2',
+                hash: 'wfm-hash'
+              }}>Cars</NavLink>
             </li>
           </ul>
         </nav>
@@ -27,7 +33,6 @@ class App extends Component {
         <Route path="/" exact render={() => <h1>Home page</h1>} />
         <Route path="/about" component={About} />
         <Route path="/cars" component={Cars} />
-
       </div>
     );
   }
