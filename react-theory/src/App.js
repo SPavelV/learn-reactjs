@@ -40,6 +40,7 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/cars/:name" component={CarDetail} />
           <Route path="/cars" exact component={Cars} />
+          <Route render={()=><h1 style={{color: 'red', textAlign: 'center'}}>404 not found</h1>}/>
         </Switch>
       </div>
     );
