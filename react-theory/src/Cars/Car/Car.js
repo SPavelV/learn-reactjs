@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom'
 
 
 const Car = props => {
-  console.log('props', props)
   return (
     <div 
       className={'Car'}
