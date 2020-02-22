@@ -115,12 +115,6 @@ export default class QuizCreator extends Component {
       console.log(e)
     }
 
-    // axios.post('https://quiz-react-ce508.firebaseio.com/quizes.json', this.state.quiz)
-    //   .then(response => {
-    //     console.log(response)
-    //   })
-    //   .catch(error => console.log(error));
-
   };
 
   changeHandler = (value, controlName) => {
