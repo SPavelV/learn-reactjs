@@ -3,6 +3,8 @@ import classes from "./QuizCreator.module.css";
 import Button from "../../components/UI/Button/Button";
 import Input from "../../components/UI/Input/Input";
 import Select from "../../components/UI/Select/Select";
+import axios from 'axios';
+
 import {
   createControl,
   validate,
@@ -97,10 +99,28 @@ export default class QuizCreator extends Component {
     });
   };
 
-  createQuizHandler = (event) => {
-    event.preventDefault();
-    console.log(this.state.quiz);
-    
+  createQuizHandler = async (event) => {
+    event.preventDefault(); 
+
+    try {
+      await axios.post('https://quiz-react-ce508.firebaseio.com/quizes.json', this.state.quiz);
+      
+      this.setState = ({
+        quiz: [],
+        isFormValid: false,
+        rightAnswerId: 1,
+        formControls: createFormControls()
+      })
+    } catch(e) {
+      console.log(e)
+    }
+
+    // axios.post('https://quiz-react-ce508.firebaseio.com/quizes.json', this.state.quiz)
+    //   .then(response => {
+    //     console.log(response)
+    //   })
+    //   .catch(error => console.log(error));
+
   };
 
   changeHandler = (value, controlName) => {
