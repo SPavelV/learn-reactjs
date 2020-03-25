@@ -30,7 +30,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state:', state);
   return {
     counter: state.counter1.counter
   }
