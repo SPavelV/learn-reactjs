@@ -1,3 +1,5 @@
+import { ADD2 } from '../actions/actionTypes';
+
 const initialState = {
   counter2: 200
 }
