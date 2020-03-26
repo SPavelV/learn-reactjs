@@ -7,7 +7,7 @@ const initialState = {
 export default function counter(state = initialState, action) {
 
   switch(action.type) {
-    case 'ADD2':
+    case ADD2:
       return {
         counter2: state.counter2 + action.payload
       }

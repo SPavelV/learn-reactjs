@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
 import rootReducer from "./redux/rootReducer";
@@ -12,9 +12,16 @@ const loggerMiddleware = store => next => action => {
   return result;
 };
 
+const composeEnhancers =
+  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+      })
+    : compose;
+
 const store = createStore(
   rootReducer,
-  applyMiddleware(loggerMiddleware, reduxThunk)
+  composeEnhancers(applyMiddleware(loggerMiddleware, reduxThunk))
 );
 
 const application = (
