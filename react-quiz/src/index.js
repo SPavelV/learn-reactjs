@@ -26,7 +26,7 @@ const firebaseConfig = {
   appId: "1:1042884251547:web:e14e1d661b4c3f49655b3e",
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig, composeEnhancers(applyMiddleware(thunk)));
+firebase.initializeApp(firebaseConfig);
 
 const app = (
   <Provider store={store}>
