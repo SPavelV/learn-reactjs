@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import classes from './QuizList.module.css';
 import Loader from '../../components/UI/Loader/Loader'
-import axios from '../../axios/axios-quiz';
 import { connect } from 'react-redux';
-import { fetchQuzes } from '../../store/actions/quiz';
+import { fetchQuizes } from '../../store/actions/quiz';
 
 class QuizList extends Component {
 
@@ -22,7 +21,7 @@ class QuizList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchQuzes();
+    this.props.fetchQuizes();
   }
 
   render() {
@@ -54,7 +53,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchQuzes: dispatch(fetchQuzes)
+    fetchQuizes: () => dispatch(fetchQuizes)
   }
 }
 

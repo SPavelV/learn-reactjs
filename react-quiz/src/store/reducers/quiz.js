@@ -1,6 +1,6 @@
 import {
   FETCH_QUIZES_START,
-  FETCH_QUZES_SUCCESS,
+  FETCH_QUIZES_SUCCESS,
   FETCH_QUIZES_ERROR,
 } from "../actions/actionTypes";
 
@@ -17,7 +17,7 @@ export default function quizReducer(state = initialState, action) {
         ...state,
         loading: true,
       };
-    case FETCH_QUZES_SUCCESS:
+    case FETCH_QUIZES_SUCCESS:
       return {
         ...state,
         loading: false,
