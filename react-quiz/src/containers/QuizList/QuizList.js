@@ -53,7 +53,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchQuizes: () => dispatch(fetchQuizes)
+    fetchQuizes: () => dispatch(fetchQuizes())
   }
 }
 
