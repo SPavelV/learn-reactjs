@@ -51,6 +51,12 @@ export function logout() {
   };
 }
 
+export function autoLogin() {
+  return {
+    
+  }
+}
+
 export function authSuccess(token) {
   return {
     type: AUTH_SUCCESS,
