@@ -10,11 +10,10 @@ export const Search = () => {
       return;
     }
 
-    if(value.trim()) {
-      console.log("Maker reques with: ", value);
-      
+    if (value.trim()) {
+      console.log("Make reques with: ", value);
     } else {
-      show("Введите данные пользователя")
+      show("Введите данные пользователя");
     }
   };
 
@@ -25,7 +24,7 @@ export const Search = () => {
         placeholder="Введите ник пользователья"
         type="text"
         value={value}
-        onChange={event => setValue(event.target.value)}
+        onChange={(event) => setValue(event.target.value)}
         onKeyPress={onSubmit}
       />
     </div>
