@@ -11,4 +11,4 @@ const  starWarsChars = [
   { name: "Дарт Вэйдер", side: "dark" },
 ];
 
-ReactDOM.render( <App list={starWarsChars} side="light"/>, document.getElementById("root"));
+ReactDOM.render( <App list={starWarsChars} side="dark"/>, document.getElementById("root"));
