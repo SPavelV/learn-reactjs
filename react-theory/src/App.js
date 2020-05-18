@@ -1,29 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.scss";
 
-export default class App extends Component {
-  state = {
-    starWarsChars: [
-      { name: "Люк Скайвокер", side: "light" },
-      { name: "Йода", side: "light" },
-      { name: "Обиван Кеноби", side: "light" },
-      { name: "Палпатин", side: "dark" },
-      { name: "Дарт Вэйдер", side: "dark" },
-    ],
-  };
+const App = ({ list, side }) => {
 
-  render() {
-    return <div className={"App"}>
+  const filteredList = list.filter(char => char.side === side);
+  return (
+    <div className={"App"}>
       <ul>
-        {this.state.starWarsChars.map((char,index) => {
+        {filteredList.map((char, index) => {
           return (
             <li key={char.name + index}>
               <strong>{char.name}: </strong>
               {char.side}
             </li>
-          )
+          );
         })}
       </ul>
-    </div>;
-  }
-}
+    </div>
+  );
+};
+
+export default App;
